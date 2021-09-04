@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class baseMove : MonoBehaviour
 {
-    public int mobility = 5;
+    public int mobility = 0;
     public float jumpHeight = 2.0f;
     public float moveSpeed = 2;
     public bool moving = false;
@@ -25,22 +25,19 @@ public class baseMove : MonoBehaviour
 
     public void getCurrentTile()
     {
-        currentTile = getTargetTile(gameObject);
-        currentTile.current = true;
+        foreach(GameObject item in tiles)
+        {
+            if(item.transform.position.x== transform.position.x&& item.transform.position.y == transform.position.y)
+            {
+                tile t = item.gameObject.GetComponent<tile>();
+                currentTile = t;
+                t.current = true;
+            }
+        }
+        
     }
 
-    public tile getTargetTile(GameObject target)
-    {
-        tile tile = null;
-        Collider2D myCollider = gameObject.GetComponent<Collider2D>();
-        int numColliders = 10;
-        Collider2D[] colliders = new Collider2D[numColliders];
-        ContactFilter2D contactFilter = new ContactFilter2D();
-        int colliderCount = myCollider.OverlapCollider(contactFilter, colliders);
-        tile=colliders[0].GetComponent<tile>();
 
-        return tile;
-    }
     public void computeAdjacentList()
     {
       
@@ -74,7 +71,6 @@ public class baseMove : MonoBehaviour
 
             if (t.distance < mobility)
             {
-               
                 foreach (tile tile in t.adjacencyList)
                 {
                     if (!tile.visited)
@@ -119,12 +115,12 @@ public class baseMove : MonoBehaviour
             if (Vector2.Distance(transform.position, target) >= 0.05f)
             {
               
-                transform.position = Vector2.MoveTowards(transform.position, target, Time.deltaTime*0.9f);
+                transform.position = Vector2.MoveTowards(transform.position,  new Vector2(target.x, target.y ) , Time.deltaTime*0.9f);
         
             }
             else
             {
-                transform.position = target;
+                transform.position = new Vector2(target.x, target.y) ;
                 path.Pop();
             }
         }
