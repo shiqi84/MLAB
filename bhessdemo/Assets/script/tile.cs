@@ -37,16 +37,6 @@ public class tile : MonoBehaviour
         {
             GetComponent<Renderer>().material.color = Color.white;
         }
-        //if (!walkable)
-        //{
-        //    getNeighbhour();
-        //  foreach(tile t in adjacencyList)
-        //    {
-        //        t.GetComponent<Renderer>().material.color = Color.green;
-        //        Debug.Log(t.transform.position);
-        //    }
-        //}
-       
       
     }
 
@@ -78,18 +68,7 @@ public class tile : MonoBehaviour
     public void CheckTile(Vector2 direction)
     {
         Vector2 edge=new Vector2(transform.position.x+direction.x, transform.position.y + direction.y ) ;
-        //if (direction.x + direction.y > 0)
-        //{
-        //    edge = new Vector2(transform.position.x + 0.5f, transform.position.y + 0.5f);
-
-        //}
-        //else
-        //{
-        //     edge = new Vector2(transform.position.x -0.5f, transform.position.y - 0.5f);
-
-        //}
-      //  Debug.Log(edge);
-       // Debug.Log(transform.position);
+    
         Ray2D ray = new Ray2D(edge, direction);
         RaycastHit2D hit = Physics2D.Raycast(ray.origin, direction);
        

@@ -9,7 +9,7 @@ public class baseMove : MonoBehaviour
     public float jumpHeight = 2.0f;
     public float moveSpeed = 2;
     public bool moving = false;
-
+    public bool selected = false;
     public tile currentTile;
 
     GameObject[] tiles;
@@ -130,6 +130,7 @@ public class baseMove : MonoBehaviour
             getCurrentTile();
 
             moving = false;
+            selected = false;
         }
 
     }
