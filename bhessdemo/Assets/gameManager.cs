@@ -16,6 +16,7 @@ public class gameManager : MonoBehaviour
     void Update()
     {
         clickMouse();
+        useableNodes();
     }
     private void clickMouse()
     {
@@ -33,6 +34,20 @@ public class gameManager : MonoBehaviour
 
         }
 
+    }
+    private bool useableNodes()
+    {
+        bool res = false;
+        foreach (GameObject item in nodes)
+        {
+            if (item.GetComponent<playerMove>().moveable == true)
+            {
+                res = true;
+
+            };
+        }
+        Debug.Log(res);
+        return res;
     }
 
 }

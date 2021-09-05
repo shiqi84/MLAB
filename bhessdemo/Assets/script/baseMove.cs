@@ -11,7 +11,7 @@ public class baseMove : MonoBehaviour
     public bool moving = false;
     public bool selected = false;
     public tile currentTile;
-
+    public bool moveable = true;
     GameObject[] tiles;
     List<tile> selectable = new List<tile>();
     Stack<tile> path = new Stack<tile>();
@@ -131,6 +131,8 @@ public class baseMove : MonoBehaviour
 
             moving = false;
             selected = false;
+            moveable = false;
+            GetComponent<Renderer>().material.color = Color.grey;
         }
 
     }

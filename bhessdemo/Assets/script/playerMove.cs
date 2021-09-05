@@ -10,26 +10,30 @@ public class playerMove : baseMove
     void Start()
     {
         init();
-        
     }
 
     void Update()
     {
-        if (selected)
+        if (selected&&moveable)
         {
-            if (!moving)
-            {
-                findSelectable();
-                clickMouse();
-            }
-            else
-            {
-                move();
-               
-            }
-        }    
+            moveNode();
+        }
      
     }
+    private void moveNode()
+    {
+        if (!moving)
+        {
+            findSelectable();
+            clickMouse();
+        }
+        else
+        {
+            move();
+
+
+    }
+}
 
     private void clickMouse()
     {
@@ -42,7 +46,8 @@ public class playerMove : baseMove
             if (hit.collider.tag == "tile")
             {
                 t = hit.collider.GetComponent<tile>();
-                if (t.selectable)
+                
+                if (t.selectable&moveable)
                 {
                     moveTo(t);
                 }
@@ -51,7 +56,7 @@ public class playerMove : baseMove
         }
 
     }
-          
+   
     
 
        }
