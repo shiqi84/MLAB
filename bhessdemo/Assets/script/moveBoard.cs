@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class tool : MonoBehaviour
+public class moveBoard : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
     {
-        
+ // gameObject.SetActive(false) ;
     }
 
     // Update is called once per frame

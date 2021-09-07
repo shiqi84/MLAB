@@ -5,11 +5,15 @@ using UnityEngine;
 
 public class playerMove : baseMove
 {
+
+    private gameManager gm;
+ 
     
     // Start is called before the first frame update
     void Start()
     {
         init();
+        gm = GameObject.Find("gameManager").GetComponent<gameManager>();
     }
 
     void Update()
@@ -49,8 +53,13 @@ public class playerMove : baseMove
                 
                 if (t.selectable&moveable)
                 {
+                  
                     moveTo(t);
                 }
+            }
+            else
+            {
+                gm.reset();
             }
 
         }
